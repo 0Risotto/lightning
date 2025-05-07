@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:lightning_/common/helpers/is_dark_mode.dart';
-import 'package:lightning_/common/widgets/appbar/app_bar.dart';
 import 'package:lightning_/common/widgets/button/basic_app_button.dart';
 import 'package:lightning_/core/configs/assets/app_images.dart';
 import 'package:lightning_/core/configs/assets/app_vectors.dart';
 import 'package:lightning_/core/configs/theme/app_colors.dart';
+import 'package:lightning_/presentation/auth/pages/signup.dart';
+import 'package:lightning_/presentation/auth/pages/singin.dart';
 
 class SignupOrSigninPage extends StatelessWidget {
   const SignupOrSigninPage({super.key});
@@ -71,7 +72,12 @@ class SignupOrSigninPage extends StatelessWidget {
                         Expanded(
                           flex: 1,
                           child: BasicAppButton(
-                            onPressed: (){},
+                            onPressed: (){
+                              Navigator.pushReplacement(
+                               context,
+                               MaterialPageRoute(builder:(BuildContext context)=> SignupPage() ) 
+                               );
+                            },
                              title:'Register'
                             ),
                         ),
@@ -79,10 +85,15 @@ class SignupOrSigninPage extends StatelessWidget {
                         Expanded(
                           flex: 1,
                           child: TextButton(
-                            onPressed:(){},
+                            onPressed:(){
+                              Navigator.pushReplacement(
+                               context,
+                               MaterialPageRoute(builder:(BuildContext context)=> SigninPage() ) 
+                               );
+                            },
                             child:  Text('Sign in'
                             ,style: TextStyle(
-                          
+                              
                                 fontWeight: FontWeight.bold,
                                 fontSize: 16,
                                 color: context.isDarkMode?Colors.white: Colors.black 

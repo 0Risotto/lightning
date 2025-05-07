@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "175517680142",
+    "project_id": "lightningmusic",
+    "storage_bucket": "lightningmusic.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:175517680142:android:c1e9f8c531df8a8052725f",
+        "android_client_info": {
+          "package_name": "com.example.lightning_"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB1rRnEl9gcIavG2MoPMUxBn0az8zEHekc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

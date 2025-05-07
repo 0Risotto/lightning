@@ -69,7 +69,7 @@ class GetStartedPage extends StatelessWidget {
                   const SizedBox(height: 20,),
                   BasicAppButton(
                     onPressed: () {
-                      Navigator.push(
+                      Navigator.pushReplacement(
                         context,
                         MaterialPageRoute(
                           builder: (BuildContext context) => const ChooseModePage()
