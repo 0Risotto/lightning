@@ -5,7 +5,7 @@ import 'package:lightning_/service_locator.dart';
 
 class SongRepositoryImpl extends SongsRepository {
   @override
-  Future<Either> getNewSongs() async {
+  Future<Either> getNewsSongs() async {
     return await sl<SongFirebaseService>().getNewsSongs();
   }
 }

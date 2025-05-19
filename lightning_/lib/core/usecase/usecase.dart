@@ -1,6 +1,5 @@
-abstract class Usecase <Type,Params>{
-
-  Future<Type> call({Params params}) ;
+abstract class UseCase<Type, Params> {
+  Future<Type> call({Params params});
   //type for api
-  //params is to create user requests 
+  //params is to create user requests
 }

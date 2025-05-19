@@ -1,12 +1,12 @@
 import 'package:dartz/dartz.dart';
 import 'package:lightning_/core/usecase/usecase.dart';
-import 'package:lightning_/data/repository/song/song_repository_impl.dart';
-import 'package:lightning_/service_locator.dart';
 
-// right left req fails goes to left and req correct goes to right
-class GetNewsSongsUseCase implements Usecase<Either, dynamic> {
+import '../../../service_locator.dart';
+import '../../repository/song/song.dart';
+
+class GetNewsSongsUseCase implements UseCase<Either, dynamic> {
   @override
   Future<Either> call({params}) async {
-    return await sl<SongRepositoryImpl>().getNewSongs();
+    return await sl<SongsRepository>().getNewsSongs();
   }
 }
