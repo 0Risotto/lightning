@@ -8,6 +8,7 @@ import 'package:lightning_/domain/repository/song/song.dart';
 import 'package:lightning_/domain/usecases/auth/signin.dart';
 import 'package:lightning_/domain/usecases/auth/singup.dart';
 import 'package:lightning_/domain/usecases/song/get_news_songs.dart';
+import 'package:lightning_/domain/usecases/song/get_play_list.dart';
 
 final sl = GetIt.instance;
 
@@ -25,4 +26,6 @@ Future<void> initializeDependencies() async {
   sl.registerSingleton<SinginUseCase>(SinginUseCase());
 
   sl.registerSingleton<GetNewsSongsUseCase>(GetNewsSongsUseCase());
+
+  sl.registerSingleton<GetPlayListUseCase>(GetPlayListUseCase());
 }

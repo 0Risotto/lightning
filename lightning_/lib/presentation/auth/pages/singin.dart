@@ -27,44 +27,46 @@ class SigninPage extends StatelessWidget {
         ),
         hideBack: true,
       ),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 50, horizontal: 30),
-        child: Center(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              _registerText(),
-              const SizedBox(
-                height: 50,
-              ),
-              _emailField(context),
-              const SizedBox(
-                height: 20,
-              ),
-              _passwordField(context),
-              const SizedBox(
-                height: 20,
-              ),
-              BasicAppButton(
-                  onPressed: () async {
-                    var result = await sl<SinginUseCase>().call(
-                        params: SigninUserReq(
-                            email: _email.text.toString(),
-                            password: _password.text.toString()));
-                    result.fold((l) {
-                      var snackbar = SnackBar(content: Text(l));
-                      ScaffoldMessenger.of(context).showSnackBar(snackbar);
-                    }, (r) {
-                      Navigator.pushAndRemoveUntil(
-                          context,
-                          MaterialPageRoute(
-                              builder: (BuildContext context) =>
-                                  const HomePage()),
-                          (route) => false);
-                    });
-                  },
-                  title: 'Sign In')
-            ],
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 50, horizontal: 30),
+          child: Center(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                _registerText(),
+                const SizedBox(
+                  height: 50,
+                ),
+                _emailField(context),
+                const SizedBox(
+                  height: 20,
+                ),
+                _passwordField(context),
+                const SizedBox(
+                  height: 20,
+                ),
+                BasicAppButton(
+                    onPressed: () async {
+                      var result = await sl<SinginUseCase>().call(
+                          params: SigninUserReq(
+                              email: _email.text.toString(),
+                              password: _password.text.toString()));
+                      result.fold((l) {
+                        var snackbar = SnackBar(content: Text(l));
+                        ScaffoldMessenger.of(context).showSnackBar(snackbar);
+                      }, (r) {
+                        Navigator.pushAndRemoveUntil(
+                            context,
+                            MaterialPageRoute(
+                                builder: (BuildContext context) =>
+                                    const HomePage()),
+                            (route) => false);
+                      });
+                    },
+                    title: 'Sign In')
+              ],
+            ),
           ),
         ),
       ),
@@ -88,6 +90,7 @@ class SigninPage extends StatelessWidget {
 
   Widget _passwordField(BuildContext context) {
     return TextField(
+      obscureText: true,
       controller: _password,
       decoration: InputDecoration(hintText: 'Password')
           .applyDefaults(Theme.of(context).inputDecorationTheme),

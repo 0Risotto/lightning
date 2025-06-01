@@ -27,51 +27,53 @@ class SignupPage extends StatelessWidget {
         ),
         hideBack: true,
       ),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 50, horizontal: 30),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            _registerText(),
-            const SizedBox(
-              height: 50,
-            ),
-            _fullNamefield(context),
-            const SizedBox(
-              height: 20,
-            ),
-            _emailField(context),
-            const SizedBox(
-              height: 20,
-            ),
-            _passwordField(context),
-            const SizedBox(
-              height: 20,
-            ),
-            BasicAppButton(
-                onPressed: () async {
-                  var result = await sl<SingupUseCase>().call(
-                      params: CreateUserReq(
-                          fullName: _fullName.text.toString(),
-                          email: _email.text.toString(),
-                          password: _password.text.toString()));
-                  result.fold(
-                    (l) {
-                      var snackbar = SnackBar(content: Text(l));
-                      ScaffoldMessenger.of(context).showSnackBar(snackbar);
-                    },
-                    (r) {
-                      Navigator.pushAndRemoveUntil(
-                          context,
-                          MaterialPageRoute(
-                              builder: (BuildContext context) =>
-                                  const HomePage()),
-                          (route) => false);
-                    },
-                  );
-                },
-                title: 'Create Account')
-          ],
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 50, horizontal: 30),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              _registerText(),
+              const SizedBox(
+                height: 50,
+              ),
+              _fullNamefield(context),
+              const SizedBox(
+                height: 20,
+              ),
+              _emailField(context),
+              const SizedBox(
+                height: 20,
+              ),
+              _passwordField(context),
+              const SizedBox(
+                height: 20,
+              ),
+              BasicAppButton(
+                  onPressed: () async {
+                    var result = await sl<SingupUseCase>().call(
+                        params: CreateUserReq(
+                            fullName: _fullName.text.toString(),
+                            email: _email.text.toString(),
+                            password: _password.text.toString()));
+                    result.fold(
+                      (l) {
+                        var snackbar = SnackBar(content: Text(l));
+                        ScaffoldMessenger.of(context).showSnackBar(snackbar);
+                      },
+                      (r) {
+                        Navigator.pushAndRemoveUntil(
+                            context,
+                            MaterialPageRoute(
+                                builder: (BuildContext context) =>
+                                    const HomePage()),
+                            (route) => false);
+                      },
+                    );
+                  },
+                  title: 'Create Account')
+            ],
+          ),
         ),
       ),
     );
@@ -102,6 +104,7 @@ class SignupPage extends StatelessWidget {
 
   Widget _passwordField(BuildContext context) {
     return TextField(
+      obscureText: true,
       controller: _password,
       decoration: InputDecoration(hintText: 'Password')
           .applyDefaults(Theme.of(context).inputDecorationTheme),

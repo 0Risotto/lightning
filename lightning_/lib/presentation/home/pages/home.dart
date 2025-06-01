@@ -5,7 +5,12 @@ import 'package:lightning_/common/widgets/appbar/app_bar.dart';
 import 'package:lightning_/core/configs/assets/app_images.dart';
 import 'package:lightning_/core/configs/assets/app_vectors.dart';
 import 'package:lightning_/core/configs/theme/app_colors.dart';
+import 'package:lightning_/main.dart';
+import 'package:lightning_/presentation/home/profile%20/simpeprofilepage.dart';
+import 'package:lightning_/presentation/home/widgets/musicregonizer.dart';
+import 'package:lightning_/presentation/home/widgets/new_blogs.dart';
 import 'package:lightning_/presentation/home/widgets/news_songs.dart';
+import 'package:lightning_/presentation/home/widgets/play_list.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -21,7 +26,7 @@ class _HomePageState extends State<HomePage>
   @override
   void initState() {
     super.initState();
-    _tabController = TabController(length: 4, vsync: this);
+    _tabController = TabController(length: 3, vsync: this);
   }
 
   @override
@@ -34,7 +39,7 @@ class _HomePageState extends State<HomePage>
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (BuildContext context) => const HomePage()));
+                      builder: (BuildContext context) => ProfilePage()));
             },
             icon: const Icon(Icons.person)),
         title: SvgPicture.asset(
@@ -49,20 +54,17 @@ class _HomePageState extends State<HomePage>
           children: [
             _homeTopCard(),
             _tabs(),
-
             SizedBox(
               height: 260,
               child: TabBarView(
                 controller: _tabController,
-                children: [
-                  const NewsSongs(),
-                  Container(),
-                  Container(),
-                  Container()
-                ],
+                children: [const NewsSongs(), Blogging(), MusicIdentifier()],
               ),
             ),
-            //const PlayList()
+            const SizedBox(
+              height: 40,
+            ),
+            const PlayList()
           ],
         ),
       ),
@@ -105,17 +107,13 @@ class _HomePageState extends State<HomePage>
           style: TextStyle(fontWeight: FontWeight.w500, fontSize: 16),
         ),
         Text(
-          'Videos',
-          style: TextStyle(fontWeight: FontWeight.w500, fontSize: 16),
-        ),
-        Text(
-          'Artists',
+          'Blogs',
           style: TextStyle(fontWeight: FontWeight.w500, fontSize: 16),
         ),
         Text(
           'Lightning',
           style: TextStyle(fontWeight: FontWeight.w500, fontSize: 16),
-        )
+        ),
       ],
     );
   }

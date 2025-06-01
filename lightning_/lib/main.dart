@@ -17,9 +17,7 @@ Future<void> main() async {
         ? HydratedStorageDirectory.web
         : HydratedStorageDirectory((await getTemporaryDirectory()).path),
   );
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform
-  );
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   await initializeDependencies();
   runApp(const MyApp());
 }
@@ -30,18 +28,14 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
-      providers: [
-        BlocProvider(create: (_)=> ThemeCubit())
-      ],
-      child: BlocBuilder<ThemeCubit,ThemeMode>(
-        builder: (context,mode)=> MaterialApp(
-
-          theme :AppTheme.lightTheme,
-          themeMode: mode,
-          darkTheme: AppTheme.darkTheme,
-          debugShowCheckedModeBanner: false,
-          home : const SplashPage()
-        ),
+      providers: [BlocProvider(create: (_) => ThemeCubit())],
+      child: BlocBuilder<ThemeCubit, ThemeMode>(
+        builder: (context, mode) => MaterialApp(
+            theme: AppTheme.lightTheme,
+            themeMode: mode,
+            darkTheme: AppTheme.darkTheme,
+            debugShowCheckedModeBanner: false,
+            home: const SplashPage()),
       ),
     );
   }
